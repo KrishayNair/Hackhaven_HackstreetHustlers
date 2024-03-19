@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <LogInWithAnonAadhaar />
-      <p>{anonAadhaar?.status}</p>
+      {/* <p>{anonAadhaar?.status}</p> */}
     </div>
   );
 }

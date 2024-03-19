@@ -36,7 +36,6 @@ contract Complaint {
         address complaintRegisteredBy;
         string title;
         string description;
-        string contact;
         string approvalRemark;
         string resolutionRemark;
         bool isApproved;
@@ -51,7 +50,7 @@ contract Complaint {
         string title
     );
 
-    function fileComplaint(string memory _title, string memory _description, string memory _contact)
+    function fileComplaint(string memory _title, string memory _description)
         public
     {
         complaint storage newComplaint = Complaints[nextId];
@@ -59,7 +58,6 @@ contract Complaint {
         newComplaint.complaintRegisteredBy = msg.sender;
         newComplaint.title = _title;
         newComplaint.description = _description;
-        newComplaint.contact = _contact;
         newComplaint.approvalRemark = "Pending Approval";
         newComplaint.resolutionRemark = "Pending Resolution";
         newComplaint.isApproved = false;
@@ -98,8 +96,9 @@ contract Complaint {
             "Complaint is already approved"
         );
         Complaints[_id].exists = false;
-        Complaints[_id].approvalRemark = string(
-           bytes.concat(bytes("This complaint is rejected. "),"-",bytes( _approvalRemark))
+        Complaints[_id].approvalRemark = string.concat(
+            "This complaint is rejected. Reason: ",
+            _approvalRemark
         );
     }
 
