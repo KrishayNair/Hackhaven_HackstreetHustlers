@@ -6,12 +6,12 @@ import { AnonAadhaarProvider } from "@anon-aadhaar/react";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AnonAadhaarProvider >
+    // <AnonAadhaarProvider >
     <ThirdwebProvider desiredChainId={ChainId.Mumbai}>
       <Component {...pageProps} />
       <Toaster />
     </ThirdwebProvider>
-    </AnonAadhaarProvider>
+    {/* </AnonAadhaarProvider> */}
   );
 }
 
